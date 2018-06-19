@@ -1,3 +1,5 @@
+var paleta = document.getElementById('paleta');
+var grillaDePixeles = document.getElementById('grilla-pixeles');
 var nombreColores = ['White', 'LightYellow',
   'LemonChiffon', 'LightGoldenrodYellow', 'PapayaWhip', 'Moccasin', 'PeachPuff', 'PaleGoldenrod', 'Bisque', 'NavajoWhite', 'Wheat', 'BurlyWood', 'Tan',
   'Khaki', 'Yellow', 'Gold', 'Orange', 'DarkOrange', 'OrangeRed', 'Tomato', 'Coral', 'DarkSalmon', 'LightSalmon', 'LightCoral', 'Salmon', 'PaleVioletRed',
@@ -19,12 +21,21 @@ var nombreColores = ['White', 'LightYellow',
   'MediumPurple', 'Lavender', 'Gainsboro', 'LightGray', 'Silver', 'DarkGray', 'Gray',
   'DimGray', 'LightSlateGray', 'DarkSlateGray', 'Black'
 ];
+// funcion para generar la paleta de colorPersonalizado
+var generarPaletaDeColores = function () {
+  for (var i = 0; i < nombreColores.length; i++) {
+    var elementoDiv = document.createElement('div');
+    elementoDiv.style.background-color = nombreColores[i];
+    elementoDiv.className = 'color-paleta';
+    paleta.appendChild(elementoDiv);
+  }
+};
 
 // Variable para guardar el elemento 'color-personalizado'
 // Es decir, el que se elige con la rueda de color.
 var colorPersonalizado = document.getElementById('color-personalizado');
 
-colorPersonalizado.addEventListener('change', 
+colorPersonalizado.addEventListener('change',
   (function() {
     // Se guarda el color de la rueda en colorActual
     colorActual = colorPersonalizado.value;
