@@ -21,6 +21,7 @@ var nombreColores = ['White', 'LightYellow',
   'MediumPurple', 'Lavender', 'Gainsboro', 'LightGray', 'Silver', 'DarkGray', 'Gray',
   'DimGray', 'LightSlateGray', 'DarkSlateGray', 'Black'
 ];
+
 // funcion para generar la paleta de colorPersonalizado
 var generarPaletaDeColores = function() {
   for (var i = 0; i < nombreColores.length; i++) {
@@ -42,6 +43,30 @@ var generarGrillaDePixeles = function() {
 generarPaletaDeColores();
 generarGrillaDePixeles();
 
+// TODO: Estoy repitiendo codigo entre los 2 listeners
+
+var cambiarColorActual = function (color){
+  var indicadorDeColor = document.getElementById("indicador-de-color");
+  var colorAnterior = indicadorDeColor.style.backgroundColor;
+  indicadorDeColor.style.backgroundColor = color;
+  console.log('Cambio de color: ' + colorAnterior + ' por ' + color);
+};
+
+var colorPaleta = document.getElementById('paleta');
+
+// FIXME: Le sobra un parentesis al listener?,
+colorPaleta.addEventListener('click',
+  (function(e){
+    // Se guarda el color seleccionado
+    var colorActual = e.target.style.backgroundColor;
+    cambiarColorActual(colorActual);
+    // var indicadorDeColor = document.getElementById("indicador-de-color");
+    // indicadorDeColor.style.backgroundColor = colorActual;
+    // console.log(colorActual);
+   })
+);
+
+
 // Variable para guardar el elemento 'color-personalizado'
 // Es decir, el que se elige con la rueda de color.
 var colorPersonalizado = document.getElementById('color-personalizado');
@@ -49,9 +74,33 @@ var colorPersonalizado = document.getElementById('color-personalizado');
 colorPersonalizado.addEventListener('change',
   (function() {
     // Se guarda el color de la rueda en colorActual
-    colorActual = colorPersonalizado.value;
+    var colorActual = colorPersonalizado.value;
+    cambiarColorActual(colorActual);
     // Completar para que cambie el indicador-de-color al colorActual
-
-
+    // var indicadorDeColor = document.getElementById("indicador-de-color");
+    // indicadorDeColor.style.backgroundColor = colorActual;
+    // console.log(colorActual);
   })
 );
+
+// funcion para pintar la grillaDePixeles
+grillaDePixeles.addEventListener('click',
+  (function(e) {
+    var indicadorDeColor = document.getElementById("indicador-de-color");
+    e.target.style.backgroundColor = indicadorDeColor.style.backgroundColor;
+  }));
+
+// var clickOn = false;
+// grillaDePixeles.addEventListener('click',
+//   (function() {
+//     clickOn = true;
+//     console.Log('clickOn es True');
+//   })
+// );
+
+// function inicia(){
+//   generarPaletaDeColores();
+//   generarGrillaDePixeles();
+// };
+//
+// inicia();
