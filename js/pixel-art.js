@@ -22,14 +22,25 @@ var nombreColores = ['White', 'LightYellow',
   'DimGray', 'LightSlateGray', 'DarkSlateGray', 'Black'
 ];
 // funcion para generar la paleta de colorPersonalizado
-var generarPaletaDeColores = function () {
+var generarPaletaDeColores = function() {
   for (var i = 0; i < nombreColores.length; i++) {
     var elementoDiv = document.createElement('div');
-    elementoDiv.style.background-color = nombreColores[i];
+    elementoDiv.style.backgroundColor = nombreColores[i];
     elementoDiv.className = 'color-paleta';
     paleta.appendChild(elementoDiv);
   }
 };
+
+// funcion para generar la grilla de pixeles
+var generarGrillaDePixeles = function() {
+  for (var i = 0; i < 1750; i++) {
+    var elementoDiv = document.createElement('div');
+    grillaDePixeles.appendChild(elementoDiv);
+  }
+};
+
+generarPaletaDeColores();
+generarGrillaDePixeles();
 
 // Variable para guardar el elemento 'color-personalizado'
 // Es decir, el que se elige con la rueda de color.
