@@ -84,19 +84,27 @@ colorPersonalizado.addEventListener('change',
 );
 
 // funcion para pintar la grillaDePixeles
-grillaDePixeles.addEventListener('click',
+grillaDePixeles.addEventListener('mousemove',
   (function(e) {
-    var indicadorDeColor = document.getElementById("indicador-de-color");
-    e.target.style.backgroundColor = indicadorDeColor.style.backgroundColor;
+    if (clickOn) {
+      var indicadorDeColor = document.getElementById("indicador-de-color");
+      e.target.style.backgroundColor = indicadorDeColor.style.backgroundColor;
+    }
   }));
 
-// var clickOn = false;
-// grillaDePixeles.addEventListener('click',
-//   (function() {
-//     clickOn = true;
-//     console.Log('clickOn es True');
-//   })
-// );
+var clickOn = false;
+grillaDePixeles.addEventListener('mousedown',
+  (function() {
+    clickOn = true;
+    console.log('clickOn es true');
+  })
+);
+grillaDePixeles.addEventListener('mouseup',
+  (function() {
+    clickOn = false;
+    console.log('clickOn es false');
+  })
+);
 
 // function inicia(){
 //   generarPaletaDeColores();
