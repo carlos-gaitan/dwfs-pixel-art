@@ -18,5 +18,7 @@ function cargarSuperheroe(superheroe) {
   var $pixeles = $("#grilla-pixeles div");
   for (var i = 0; i < superheroe.length; i++) {
     $pixeles[i].style.backgroundColor = superheroe[i];
+    console.log(i + ' dentro del bucle de la funcion cargarsuperheroe');
   }
+  console.log(superheroe + ' desde dentro de la funcion cargarsuperheroe');
 }

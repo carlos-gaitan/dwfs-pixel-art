@@ -22,6 +22,8 @@ var nombreColores = ['White', 'LightYellow',
   'DimGray', 'LightSlateGray', 'DarkSlateGray', 'Black'
 ];
 
+var tamanoGrilla = 1750;
+
 // funcion para generar la paleta de colorPersonalizado
 var generarPaletaDeColores = function() {
   for (var i = 0; i < nombreColores.length; i++) {
@@ -34,11 +36,43 @@ var generarPaletaDeColores = function() {
 
 // funcion para generar la grilla de pixeles
 var generarGrillaDePixeles = function() {
-  for (var i = 0; i < 1750; i++) {
+  for (var i = 0; i < tamanoGrilla; i++) {
     var elementoDiv = document.createElement('div');
     grillaDePixeles.appendChild(elementoDiv);
   }
 };
+
+// funcion para borrar la grilla de pixeles
+/* sin jquery */
+// function borrarGrilla() {
+//   var $pixeles = $("#grilla-pixeles div");
+//   for (var i = 0; i < tamanoGrilla; i++) {
+//     $pixeles[i].style.backgroundColor = '#f9913c';
+//   }
+// };
+// // eventListener para borrar Grilla
+// var botonBorrar = document.getElementById('borrar');
+// botonBorrar.addEventListener('click', function() {
+//   borrarGrilla(); //esta bien llamarla desde aca o se podria reemplazar en el parametro del addEventListener lugo del click ??
+// });
+
+// funcion para borrar la grilla de pixeles
+/* con jquery */
+
+// TODO: no entiendo lo siguiente de la guia "Recomiendan los/as Pro: conviene guardar en una variable todos los <div> (píxeles) de grilla-pixeles y trabajar con ellos para borrarlos."
+$( "#borrar" ).click(function() {
+  $( "#grilla-pixeles div" ).each(function() {
+    $( this ).animate({backgroundColor:"#ffffff"}, 3000);
+  });
+});
+
+
+//
+$(".imgs li img").click(function(){
+  cargarSuperheroe($(this).prop('id'));
+  console.log('pinchaste una imagen con id: ' + $(this).prop('id') + ' - ' + $(this).prop('src') );
+});
+
 
 generarPaletaDeColores();
 generarGrillaDePixeles();
