@@ -68,8 +68,16 @@ $( "#borrar" ).click(function() {
 
 
 //
+// TODO: fijarse en vez de usar el swith usar eval
 $(".imgs li img").click(function(){
-  cargarSuperheroe($(this).prop('id'));
+  var superhero = $(this).prop('id');
+  switch (superhero) {
+    case "batman":
+      cargarSuperheroe(batman);
+      break;
+    default:
+}
+
   console.log('pinchaste una imagen con id: ' + $(this).prop('id') + ' - ' + $(this).prop('src') );
 });
 
