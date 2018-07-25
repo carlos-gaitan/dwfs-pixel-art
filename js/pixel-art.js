@@ -66,8 +66,12 @@ $( "#borrar" ).click(function() {
   });
 });
 
+$("#guardar").click(function(){
+  guardarPixelArt();
+});
 
-//
+
+// funcion para cargar los superheroes en la grillla
 // TODO: fijarse en vez de usar el swith usar eval
 $(".imgs li img").click(function(){
   var superhero = $(this).prop('id');
@@ -75,9 +79,17 @@ $(".imgs li img").click(function(){
     case "batman":
       cargarSuperheroe(batman);
       break;
+    case "flash":
+      cargarSuperheroe(flash);
+      break;
+    case "invisible":
+      cargarSuperheroe(invisible);
+      break;
+    case "wonder":
+      cargarSuperheroe(wonder);
+      break;
     default:
-}
-
+  };
   console.log('pinchaste una imagen con id: ' + $(this).prop('id') + ' - ' + $(this).prop('src') );
 });
 
