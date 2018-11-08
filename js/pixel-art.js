@@ -59,7 +59,6 @@ var generarGrillaDePixeles = function() {
 // funcion para borrar la grilla de pixeles
 /* con jquery */
 
-// TODO: no entiendo lo siguiente de la guia "Recomiendan los/as Pro: conviene guardar en una variable todos los <div> (píxeles) de grilla-pixeles y trabajar con ellos para borrarlos."
 $( "#borrar" ).click(function() {
   $( "#grilla-pixeles div" ).each(function() {
     $( this ).animate({backgroundColor:"#ffffff"}, 3000);
@@ -97,8 +96,6 @@ $(".imgs li img").click(function(){
 generarPaletaDeColores();
 generarGrillaDePixeles();
 
-// TODO: Estoy repitiendo codigo entre los 2 listeners
-
 var cambiarColorActual = function (color){
   var indicadorDeColor = document.getElementById("indicador-de-color");
   var colorAnterior = indicadorDeColor.style.backgroundColor;
@@ -108,15 +105,11 @@ var cambiarColorActual = function (color){
 
 var colorPaleta = document.getElementById('paleta');
 
-// FIXME: Le sobra un parentesis al listener?,
 colorPaleta.addEventListener('click',
   (function(e){
     // Se guarda el color seleccionado
     var colorActual = e.target.style.backgroundColor;
     cambiarColorActual(colorActual);
-    // var indicadorDeColor = document.getElementById("indicador-de-color");
-    // indicadorDeColor.style.backgroundColor = colorActual;
-    // console.log(colorActual);
    })
 );
 
@@ -130,28 +123,35 @@ colorPersonalizado.addEventListener('change',
     // Se guarda el color de la rueda en colorActual
     var colorActual = colorPersonalizado.value;
     cambiarColorActual(colorActual);
-    // Completar para que cambie el indicador-de-color al colorActual
-    // var indicadorDeColor = document.getElementById("indicador-de-color");
-    // indicadorDeColor.style.backgroundColor = colorActual;
-    // console.log(colorActual);
   })
 );
 
 // funciones para pintar la grillaDePixeles
 var clickOn = false;
-grillaDePixeles.addEventListener('mousedown',
+
+document.body.addEventListener('mousedown',
   (function() {
     clickOn = true;
     console.log('clickOn es true');
   })
 );
-//grillaDePixeles.addEventListener('mouseup',
-document.addEventListener('mouseup',
+
+document.body.addEventListener('mouseup',
   (function() {
+
     clickOn = false;
     console.log('clickOn es false');
   })
 );
+
+grillaDePixeles.addEventListener('click',
+  (function(e) {
+    var indicadorDeColor = document.getElementById("indicador-de-color");
+    e.target.style.backgroundColor = indicadorDeColor.style.backgroundColor;
+  })
+);
+
+
 
 grillaDePixeles.addEventListener('mousemove',
   (function(e) {
@@ -160,12 +160,3 @@ grillaDePixeles.addEventListener('mousemove',
       e.target.style.backgroundColor = indicadorDeColor.style.backgroundColor;
     }
   }));
-
-
-
-// function inicia(){
-//   generarPaletaDeColores();
-//   generarGrillaDePixeles();
-// };
-//
-// inicia();
