@@ -145,7 +145,8 @@ grillaDePixeles.addEventListener('mousedown',
     console.log('clickOn es true');
   })
 );
-grillaDePixeles.addEventListener('mouseup',
+//grillaDePixeles.addEventListener('mouseup',
+document.addEventListener('mouseup',
   (function() {
     clickOn = false;
     console.log('clickOn es false');
